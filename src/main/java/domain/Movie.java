@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.validation.Schema;
 
+import domain.person.GenderPerson;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import domain.person.Person;
@@ -63,6 +64,28 @@ public class Movie {
 		setEvaluation(evaluation);
 		setSeen(seen);
 		this.actors = new ArrayList<Person>();
+
+		Person actor1 = new Person();
+		actor1.setId(1);
+		actor1.setName("Hugh");
+		actor1.setFamilyName("Jackman");
+		actor1.setGender(GenderPerson.MALE);
+		actor1.setJaarGeboorte(1968);
+		actor1.setMaandGeboorte(10);
+		actor1.setDagGeboorte(12);
+
+		Person actor2 = new Person();
+		actor2.setId(2);
+		actor2.setName("Christian");
+		actor2.setFamilyName("Bale");
+		actor2.setGender(GenderPerson.MALE);
+		actor2.setJaarGeboorte(1974);
+		actor2.setMaandGeboorte(1);
+		actor2.setDagGeboorte(30);
+
+		actors.add(actor1);
+		actors.add(actor2);
+
 	}
 
 
