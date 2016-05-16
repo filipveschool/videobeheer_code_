@@ -19,217 +19,177 @@ import helperclasses.MovieRating;
 @Entity
 public class Movie {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	@NotNull
-	@Size(min = 1, max = 80)
-	private String title;
+    @NotNull
+    @Size(min = 1, max = 80)
+    private String title;
 
-	// @NotNull
-	// @Size(min = 3, max=40)
-	@NotEmpty(message = "Please enter the name!")
-	private String director;
+    // @NotNull
+    // @Size(min = 3, max=40)
+    @NotEmpty(message = "Please enter the name!")
+    private String director;
 
-	@NotNull
-	private int jaar;
+    @NotNull
+    private int jaar;
 
-	@Enumerated(EnumType.STRING)
-	private MovieGenre genre;
+    @Enumerated(EnumType.STRING)
+    private MovieGenre genre;
 
-	@Enumerated(EnumType.STRING)
-	private MovieRating rating;
+    @Enumerated(EnumType.STRING)
+    private MovieRating rating;
 
-	// @Convert(converter = MovieEvaluationConverter.class)
-	@Enumerated(EnumType.STRING)
-	private MovieEvaluation evaluation;
+    // @Convert(converter = MovieEvaluationConverter.class)
+    @Enumerated(EnumType.STRING)
+    private MovieEvaluation evaluation;
 
-	private boolean seen;
+    private boolean seen;
 
-	@OneToMany
-	private List<Person> actors;
+    @OneToMany
+    private List<Person> actors;
 
-	public Movie() {
-		this.actors = new ArrayList<Person>();
-		Person actor1 = new Person();
-		actor1.setId(1);
-		actor1.setName("Hugh");
-		actor1.setFamilyName("Jackman");
-		actor1.setGender(GenderPerson.MALE);
-		actor1.setJaarGeboorte(1968);
-		actor1.setMaandGeboorte(10);
-		actor1.setDagGeboorte(12);
+    public Movie() {
 
-		Person actor2 = new Person();
-		actor2.setId(2);
-		actor2.setName("Christian");
-		actor2.setFamilyName("Bale");
-		actor2.setGender(GenderPerson.MALE);
-		actor2.setJaarGeboorte(1974);
-		actor2.setMaandGeboorte(1);
-		actor2.setDagGeboorte(30);
+    }
 
-		actors.add(actor1);
-		actors.add(actor2);
-	}
-	
-	public Movie(String title, String director, int jaar, MovieGenre genre, MovieRating rating,
-			MovieEvaluation evaluation, boolean seen) {
-		setTitle(title);
-		setDirector(director);
-		setJaar(jaar);
-		setGenre(genre);
-		setRating(rating);
-		setEvaluation(evaluation);
-		setSeen(seen);
-		this.actors = new ArrayList<Person>();
-
-		Person actor1 = new Person();
-		actor1.setId(1);
-		actor1.setName("Hugh");
-		actor1.setFamilyName("Jackman");
-		actor1.setGender(GenderPerson.MALE);
-		actor1.setJaarGeboorte(1968);
-		actor1.setMaandGeboorte(10);
-		actor1.setDagGeboorte(12);
-
-		Person actor2 = new Person();
-		actor2.setId(2);
-		actor2.setName("Christian");
-		actor2.setFamilyName("Bale");
-		actor2.setGender(GenderPerson.MALE);
-		actor2.setJaarGeboorte(1974);
-		actor2.setMaandGeboorte(1);
-		actor2.setDagGeboorte(30);
-
-		actors.add(actor1);
-		actors.add(actor2);
-
-	}
+    public Movie(String title, String director, int jaar, MovieGenre genre, MovieRating rating,
+                 MovieEvaluation evaluation, boolean seen) {
+        setTitle(title);
+        setDirector(director);
+        setJaar(jaar);
+        setGenre(genre);
+        setRating(rating);
+        setEvaluation(evaluation);
+        setSeen(seen);
+        this.actors = new ArrayList<Person>();
 
 
-	public String getTitle() {
-		return title;
-	}
+    }
 
-	public void setTitle(String title) {
-		/*
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        /*
 		  if (title == null || title.isEmpty()) {
               throw new DomainException("title cannot be null");
           }*/
-		this.title = title;
-	}
+        this.title = title;
+    }
 
-	public String getDirector() {
-		return director;
-	}
+    public String getDirector() {
+        return director;
+    }
 
-	public void setDirector(String director) {
+    public void setDirector(String director) {
 		/*
         if (director == null || director.isEmpty()) {
             throw new DomainException("director cannot be null or empty");
         }
         */
-		this.director = director;
-	}
+        this.director = director;
+    }
 
-	public Movie(String title, String director, int jaar) {
-		setTitle(title);
-		setDirector(director);
-		setJaar(jaar);
-	}
+    public Movie(String title, String director, int jaar) {
+        setTitle(title);
+        setDirector(director);
+        setJaar(jaar);
+    }
 
-	
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
+    public int getId() {
+        return id;
+    }
 
-		if (id < 0) {
-			throw new DomainException("ID mag niet kleiner zijn dan 0");
-		}
+    public void setId(int id) {
 
-		this.id = id;
-	}
+        if (id < 0) {
+            throw new DomainException("ID mag niet kleiner zijn dan 0");
+        }
 
-	public int getJaar() {
-		return jaar;
-	}
+        this.id = id;
+    }
 
-	public void setJaar(int jaar) {
-		if (jaar <= 0)
-			throw new IllegalArgumentException("year cannot be 0 or smaller");
+    public int getJaar() {
+        return jaar;
+    }
 
-		this.jaar = jaar;
-	}
+    public void setJaar(int jaar) {
+        if (jaar <= 0)
+            throw new IllegalArgumentException("year cannot be 0 or smaller");
 
-	public MovieGenre getGenre() {
-		return genre;
-	}
+        this.jaar = jaar;
+    }
 
-	public void setGenre(MovieGenre genre) {
-		if (genre == null) {
-			throw new DomainException("Genre mag niet leeg zijn");
-		}
-		this.genre = genre;
-	}
+    public MovieGenre getGenre() {
+        return genre;
+    }
 
-	public MovieRating getRating() {
-		return rating;
-	}
+    public void setGenre(MovieGenre genre) {
+        if (genre == null) {
+            throw new DomainException("Genre mag niet leeg zijn");
+        }
+        this.genre = genre;
+    }
 
-	public void setRating(MovieRating rating) {
-		this.rating = rating;
-	}
+    public MovieRating getRating() {
+        return rating;
+    }
 
-	public MovieEvaluation getEvaluation() {
-		return evaluation;
-	}
+    public void setRating(MovieRating rating) {
+        this.rating = rating;
+    }
 
-	public void setEvaluation(MovieEvaluation evaluation) {
-		if (evaluation == null) {
-			throw new DomainException("MovieEvaluation cannot be empty");
-		}
+    public MovieEvaluation getEvaluation() {
+        return evaluation;
+    }
 
-		this.evaluation = evaluation;
-	}
+    public void setEvaluation(MovieEvaluation evaluation) {
+        if (evaluation == null) {
+            throw new DomainException("MovieEvaluation cannot be empty");
+        }
 
-	public boolean isSeen() {
-		return seen;
-	}
+        this.evaluation = evaluation;
+    }
 
-	public void setSeen(boolean seen) {
-		this.seen = seen;
-	}
+    public boolean isSeen() {
+        return seen;
+    }
 
-	public String gezienOfNiet() {
+    public void setSeen(boolean seen) {
+        this.seen = seen;
+    }
+
+    public String gezienOfNiet() {
         return isSeen() ? "Ja" : "Nee";
         // return seen == true dan "Ja" anders "Nee"
 
     }
 
-	
-	public List<Person> getActors() {
-		return actors;
-	}
 
-	public void setActors(List<Person> actors) {
-		this.actors = actors;
-	}
+    public List<Person> getActors() {
+        return actors;
+    }
 
-	public void addActor(Person actor) {
+    public void setActors(List<Person> actors) {
+        this.actors = actors;
+    }
 
-		getActors().add(actor);
-	}
+    public void addActor(Person actor) {
 
-	@Override
-	public String toString() {
-		return "Film: " + getTitle() + " met als regisseur: " + getDirector() + " - uitgebracht in het jaar: "
-				+ getJaar() + "\n" + " met als genre : " + getGenre().toString() + " heeft als rating: "
-				+ getRating().toString() + " en als evaluatie : " + getEvaluation().toString() + " en is gezien: "
-				+ gezienOfNiet();
-	}
+        getActors().add(actor);
+    }
+
+    @Override
+    public String toString() {
+        return "Film: " + getTitle() + " met als regisseur: " + getDirector() + " - uitgebracht in het jaar: "
+                + getJaar() + "\n" + " met als genre : " + getGenre().toString() + " heeft als rating: "
+                + getRating().toString() + " en als evaluatie : " + getEvaluation().toString() + " en is gezien: "
+                + gezienOfNiet();
+    }
 
 }
