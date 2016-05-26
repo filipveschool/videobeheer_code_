@@ -15,6 +15,7 @@ import domain.person.Person;
 import helperclasses.MovieEvaluation;
 import helperclasses.MovieGenre;
 import helperclasses.MovieRating;
+import restful.TheMVDB;
 
 @Entity
 public class Movie {
@@ -50,6 +51,20 @@ public class Movie {
     @OneToMany
     private List<Person> actors;
 
+    /*
+    private TheMVDB theMVDB;
+
+    public TheMVDB getTheMVDB() {
+        return theMVDB;
+    }
+
+    public void setTheMVDB(TheMVDB theMVDB) {
+        this.theMVDB = theMVDB;
+    }
+
+*/
+    private String themoviedbid;
+
     public Movie() {
 
     }
@@ -68,6 +83,19 @@ public class Movie {
 
     }
 
+    public Movie(String title, String director, int jaar) {
+        setTitle(title);
+        setDirector(director);
+        setJaar(jaar);
+    }
+
+    public String getThemoviedbid() {
+        return themoviedbid;
+    }
+
+    public void setThemoviedbid(String themoviedbid) {
+        this.themoviedbid = themoviedbid;
+    }
 
     public String getTitle() {
         return title;
@@ -93,13 +121,6 @@ public class Movie {
         */
         this.director = director;
     }
-
-    public Movie(String title, String director, int jaar) {
-        setTitle(title);
-        setDirector(director);
-        setJaar(jaar);
-    }
-
 
     public int getId() {
         return id;
