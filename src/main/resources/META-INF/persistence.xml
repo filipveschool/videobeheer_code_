@@ -11,6 +11,7 @@
 
         <class>domain.Movie</class>
         <class>domain.person.Person</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <!--
             <property name="eclipselink.jdbc.url" value=""/>
@@ -18,14 +19,14 @@
             <property name="eclipselink.jdbc.user" value=""/>
             <property name="eclipselink.jdbc.password" value=""/>-->
 
-            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/projectvideoip;create=true" />
-            <property name="javax.persistence.jdbc.password" value="test" />
-            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
-            <property name="javax.persistence.jdbc.user" value="admin" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/projectvideoip;create=true"/>
+            <property name="javax.persistence.jdbc.password" value="test"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.user" value="admin"/>
 
 
-             <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
-            <!--  <property name="eclipselink.ddl-generation" value="create-tables" />-->
-      </properties>
-  </persistence-unit>
+            <!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>-->
+             <property name="eclipselink.ddl-generation" value="create-tables" />
+        </properties>
+    </persistence-unit>
 </persistence>

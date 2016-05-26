@@ -70,7 +70,7 @@ public class Movie {
     }
 
     public Movie(String title, String director, int jaar, MovieGenre genre, MovieRating rating,
-                 MovieEvaluation evaluation, boolean seen, String themoviedbid) {
+                 MovieEvaluation evaluation, boolean seen) {
         setTitle(title);
         setDirector(director);
         setJaar(jaar);
@@ -78,7 +78,7 @@ public class Movie {
         setRating(rating);
         setEvaluation(evaluation);
         setSeen(seen);
-        setThemoviedbid(themoviedbid);
+        //setThemoviedbid(themoviedbid);
         this.actors = new ArrayList<Person>();
 
 
