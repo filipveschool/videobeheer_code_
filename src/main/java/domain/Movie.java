@@ -70,7 +70,7 @@ public class Movie {
     }
 
     public Movie(String title, String director, int jaar, MovieGenre genre, MovieRating rating,
-                 MovieEvaluation evaluation, boolean seen) {
+                 MovieEvaluation evaluation, boolean seen, String themoviedbid) {
         setTitle(title);
         setDirector(director);
         setJaar(jaar);
@@ -78,6 +78,7 @@ public class Movie {
         setRating(rating);
         setEvaluation(evaluation);
         setSeen(seen);
+        setThemoviedbid(themoviedbid);
         this.actors = new ArrayList<Person>();
 
 
@@ -210,7 +211,7 @@ public class Movie {
         return "Film: " + getTitle() + " met als regisseur: " + getDirector() + " - uitgebracht in het jaar: "
                 + getJaar() + "\n" + " met als genre : " + getGenre().toString() + " heeft als rating: "
                 + getRating().toString() + " en als evaluatie : " + getEvaluation().toString() + " en is gezien: "
-                + gezienOfNiet();
+                + gezienOfNiet() + " - moviedbid : " + getThemoviedbid();
     }
 
 }
