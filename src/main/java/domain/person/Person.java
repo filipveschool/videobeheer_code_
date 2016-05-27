@@ -240,4 +240,19 @@ public class Person {
 		setMoviesPlayedIn(movies);
 	}
 
+	@Override
+	public String toString() {
+		return "Person{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", familyName='" + familyName + '\'' +
+				", gender=" + gender +
+				", dagGeboorte=" + dagGeboorte +
+				", moviesPlayedIn=" + moviesPlayedIn +
+				", maandGeboorte=" + maandGeboorte +
+				", jaarGeboorte=" + jaarGeboorte +
+				'}';
+	}
+
+
 }
